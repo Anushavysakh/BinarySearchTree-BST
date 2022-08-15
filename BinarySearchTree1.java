@@ -1,9 +1,9 @@
 package com.binarysearchtree.bridgelabz;
 
-public class BinarySearchTree1 {
+public class BinarySearchTree2 {
     Node root;
 
-    public BinarySearchTree1() {
+    public BinarySearchTree2() {
         root = null;
     }
 
@@ -20,7 +20,7 @@ public class BinarySearchTree1 {
             Node parent = null;
             while(true) {
                 parent = current;
-                if(data < current.data) {   // 30 < 56
+                if(data < current.data) {
                     current = current.left;
                     if(current == null) {
                         parent.left = newNode;
@@ -51,13 +51,36 @@ public class BinarySearchTree1 {
         }
     }
 
+    // Calculate the Size For checking all nodes are added or Not
+    public int size(Node node) {
+        if (node == null)
+            return 0;
+        else
+            return(size(node.left) + 1 + size(node.right));
+    }
+
     public static void main(String[] args) {
-        BinarySearchTree1 binary = new BinarySearchTree1();
+        BinarySearchTree2 binary = new BinarySearchTree2();
 
         binary.insert(56);
         binary.insert(30);
         binary.insert(70);
+        binary.insert(22);
+        binary.insert(40);
+        binary.insert(11);
+        binary.insert(3);
+        binary.insert(16);
+        binary.insert(60);
+        binary.insert(95);
+        binary.insert(65);
+        binary.insert(63);
+        binary.insert(67);
 
         binary.inorderTraversal(binary.root);
+        int value = binary.size(binary.root);
+        if(value == 13)
+            System.out.println("\nAll the Elements are added Sucessfully");
+        else
+            System.out.println("\nSome Elements are Missing");
     }
 }
